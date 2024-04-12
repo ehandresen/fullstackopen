@@ -1,6 +1,6 @@
 # Full Stack Open
 
-## Deep Dive into Modern Web Development
+## _Deep Dive into Modern Web Development_
 
 http://www.fullstackopen.com
 

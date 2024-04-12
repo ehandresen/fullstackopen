@@ -10,14 +10,15 @@ const Hello = (props) => {
 };
 
 const App = () => {
-  const name = 'Peter';
-  const age = 10;
+  const friends = ['Peter', 'Maya'];
 
   return (
     <div>
-      <h1>Greetings</h1>
-      <Hello name="Maya" age={26 + 10} />
-      <Hello name={name} age={age} />
+      <ul>
+        {friends.map((friend, id) => (
+          <li key={id}>{friend}</li>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -10,6 +10,10 @@ http://www.fullstackopen.com
 
 ### Part 2 - Communicating with Server
 
+[x] Fundamentals of Web Apps
+[ ] Introduction to React
+[ ] Communicating with Server
+
 _Italic text_
 
 **Strong text**

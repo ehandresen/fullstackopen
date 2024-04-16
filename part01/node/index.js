@@ -1,12 +1,5 @@
-const array = [1, 2, 3, 4];
+const numbers = [6, 7, 8, 9];
 
-const arr2 = array.concat(10, 11, 100);
+const numbersSquared = numbers.map((num) => num * num);
 
-const x = array.forEach(function (x, index, array) {
-  //   console.log(array);
-});
-
-// const newArray = array.map((number) => number * 100);
-
-const [first, ...rest] = array;
-console.log(rest);
+console.log(numbersSquared);

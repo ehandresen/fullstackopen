@@ -11,6 +11,6 @@ http://www.fullstackopen.com/en/
 ### Completion Overview:
 
 - [x] Part 0 - Fundamentals of Web apps
-- [ ] Part 1 - Introduction to React _<span style="color:green">(In progress)</span>_
+- [ ] Part 1 - Introduction to React _<font color="green">(In progress)</font>_
 - [ ] Part 2 - Communicating with server
 - [ ] Part 3 - Programming a server with NodeJS and Express

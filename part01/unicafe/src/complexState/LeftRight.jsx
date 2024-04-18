@@ -20,22 +20,32 @@ const LeftRight = () => {
 
   return (
     <div>
-      {left}
-      <button onClick={handleLeftClick}>left</button>
-      <button onClick={handleRightClick}>right</button>
-      {right}
+      <Button click={left} onClick={handleLeftClick} text="left" />
+      <Button click={right} onClick={handleRightClick} text="right" />
       <History allClicks={allClicks} />
       <p>Total: {total}</p>
     </div>
   );
 };
 
-const History = ({ allClicks }) => {
+const History = (props) => {
+  console.log('props value:', props);
+  const { allClicks } = props;
+
   if (allClicks.length === 0) {
     return <div>Press a button</div>;
   }
 
   return <div>Button press history: {allClicks.join(' ')}</div>;
+};
+
+const Button = ({ click, onClick, text }) => {
+  return (
+    <div>
+      <button onClick={onClick}>{text}</button>
+      {click}
+    </div>
+  );
 };
 
 export default LeftRight;

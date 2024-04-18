@@ -23,7 +23,7 @@ const LeftRight = () => {
       <Button click={left} onClick={handleLeftClick} text="left" />
       <Button click={right} onClick={handleRightClick} text="right" />
       <History allClicks={allClicks} />
-      <p>Total: {total}</p>
+      <p>Total clicks: {total}</p>
     </div>
   );
 };

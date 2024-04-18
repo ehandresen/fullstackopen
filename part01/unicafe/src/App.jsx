@@ -4,17 +4,42 @@ const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
   const [bad, setBad] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [average, setAverage] = useState(0);
+
+  const handleGoodClick = () => {
+    setGood(good + 1);
+    setTotal(total + 1);
+    setAverage(average + 1);
+  };
+
+  const handleNeutralClick = () => {
+    setNeutral(neutral + 1);
+    setTotal(total + 1);
+  };
+
+  const handleBadClick = () => {
+    setBad(bad + 1);
+    setTotal(total + 1);
+    setAverage(average - 1);
+  };
 
   return (
     <div>
       <Title title="give feedback" />
-      <Button handleClick={() => setGood(good + 1)} text="good" />
-      <Button handleClick={() => setNeutral(neutral + 1)} text="neutral" />
-      <Button handleClick={() => setBad(bad + 1)} text="bad" />
+
+      <Button handleClick={handleGoodClick} text="good" />
+      <Button handleClick={handleNeutralClick} text="neutral" />
+      <Button handleClick={handleBadClick} text="bad" />
+
       <Title title="statistics" />
+
       <Display value={good} text="good" />
       <Display value={neutral} text="neutral" />
       <Display value={bad} text="bad" />
+      <Display value={total} text="total" />
+      <Display value={average / total} text="average" decimal={2} />
+      <p>{(good / total).toFixed(5) * 100} %</p>
     </div>
   );
 };
@@ -29,12 +54,14 @@ const Button = (props) => {
 
 // DISPLAY
 const Display = (props) => {
-  console.log('Display prop:', props);
+  let decimal = '';
   const { value, text } = props;
+
+  !props.decimal ? (decimal = 0) : (decimal = props.decimal);
 
   return (
     <p>
-      {text} {value}
+      {text} {value.toFixed(decimal)}
     </p>
   );
 };

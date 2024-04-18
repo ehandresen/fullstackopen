@@ -34,12 +34,18 @@ const App = () => {
 
       <Title title="statistics" />
 
-      <Display value={good} text="good" />
-      <Display value={neutral} text="neutral" />
-      <Display value={bad} text="bad" />
-      <Display value={total} text="total" />
-      <Display value={average / total} text="average" decimal={2} />
-      <p>{(good / total).toFixed(5) * 100} %</p>
+      {total < 1 ? (
+        <p>No feedback given</p>
+      ) : (
+        <>
+          <Statistics value={good} text="good" />
+          <Statistics value={neutral} text="neutral" />
+          <Statistics value={bad} text="bad" />
+          <Statistics value={total} text="total" />
+          <Statistics value={average / total} text="average" decimal={2} />
+          <p>{(good / total).toFixed(5) * 100} %</p>
+        </>
+      )}
     </div>
   );
 };
@@ -52,8 +58,8 @@ const Button = (props) => {
   return <button onClick={props.handleClick}>{props.text}</button>;
 };
 
-// DISPLAY
-const Display = (props) => {
+// Statistics
+const Statistics = (props) => {
   let decimal = '';
   const { value, text } = props;
 

@@ -60,7 +60,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>Anecdote of the day</h1>
+      <h1 style={styles}>Anecdote of the day</h1>
       <button onClick={handleClick}>Next Anecdote</button>
       <button onClick={handleVote}>Vote</button>
       <p>
@@ -71,6 +71,14 @@ const App = () => {
       <p>{anecdotes[mostVotes]}</p>
     </div>
   );
+};
+
+const styles = {
+  color: '#fff',
+  background: 'black',
+  padding: '5px',
+  borderRadius: '5px',
+  fontFamily: 'sans-serif',
 };
 
 export default App;

@@ -12,6 +12,7 @@ const App = () => {
     6: 0,
     7: 0,
   });
+  const [mostVotes, setMostVotes] = useState(0);
 
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -37,16 +38,37 @@ const App = () => {
     console.log(newPoints);
 
     setPoints(newPoints);
+
+    showMostVoted();
+  };
+
+  const showMostVoted = () => {
+    let max = points[0];
+    let index = 0;
+
+    for (let key in points) {
+      if (points[key] > max) {
+        max = points[key];
+        index = key;
+        console.log('max:', max);
+        console.log('index:', index);
+      }
+    }
+
+    setMostVotes(index);
   };
 
   return (
     <div>
+      <h1>Anecdote of the day</h1>
       <button onClick={handleClick}>Next Anecdote</button>
       <button onClick={handleVote}>Vote</button>
       <p>
         {selected}. {anecdotes[selected]}
       </p>
       <p>Votes: {points[selected]}</p>
+      <h1>Anecdote with the most votes</h1>
+      <p>{anecdotes[mostVotes]}</p>
     </div>
   );
 };

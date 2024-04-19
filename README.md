@@ -11,6 +11,6 @@ http://www.fullstackopen.com/en/
 ### Completion Overview:
 
 - [x] Part 0 - Fundamentals of Web apps
-- [ ] Part 1 - Introduction to React _(In progress)_
-- [ ] Part 2 - Communicating with server
+- [x] Part 1 - Introduction to React
+- [ ] **Part 2 - Communicating with server _(In progress)_**
 - [ ] Part 3 - Programming a server with NodeJS and Express

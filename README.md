@@ -14,3 +14,9 @@ http://www.fullstackopen.com/en/
 - [x] Part 1 - Introduction to React
 - [ ] **Part 2 - Communicating with server _(In progress)_**
 - [ ] Part 3 - Programming a server with NodeJS and Express
+
+### Notes:
+
+- part 2: The new note is added to the list of notes using the concat array method:
+  <code>setNotes(notes.concat(noteObject))</code>
+  The method does not mutate the original <code>notes</code> array, but rather creates _a new copy of the array with the new item added to the end_. This is important since we must **never mutate state directly** in React!

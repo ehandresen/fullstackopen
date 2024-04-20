@@ -1,70 +1,55 @@
-const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10,
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7,
-      },
-      {
-        name: 'State of a component',
-        exercises: 14,
-      },
-    ],
+import { useState } from 'react';
+import Note from './components/Note';
+
+const App = (props) => {
+  const [notes, setNotes] = useState(props.notes);
+  const [newNote, setNewNote] = useState('a new note...');
+  const [showAll, setShowAll] = useState(true);
+
+  const addNote = (event) => {
+    event.preventDefault();
+
+    const noteObject = {
+      content: newNote,
+      important: Math.random() < 0.5, // 50/50 true/false
+      id: notes.length + 1,
+    };
+
+    setNotes(notes.concat(noteObject));
+    setNewNote('');
   };
+
+  const handleNoteChange = (event) => {
+    setNewNote(event.target.value);
+  };
+
+  const notesToShow = showAll
+    ? notes
+    : notes.filter((note) => note.important === true);
 
   return (
     <div>
-      <Header course={course} />
-
-      <Content parts={course.parts} />
-
-      <Total parts={course.parts} />
-    </div>
-  );
-};
-
-const Header = (props) => {
-  return (
-    <>
-      <h1>{props.course.name}</h1>
-    </>
-  );
-};
-
-const Content = (props) => {
-  return (
-    <>
+      <h1>Notes</h1>
       <div>
-        <Part part={props.parts[0]} />
-        <Part part={props.parts[1]} />
-        <Part part={props.parts[2]} />
+        {/*  */}
+        {/* the event handler switches showAll state from true to false and vice versa */}
+        <button onClick={() => setShowAll(!showAll)}>
+          {/*  */}
+          {/* text of the btn depends on the value of the showAll state */}
+          show {showAll ? 'important' : 'all'}
+        </button>
       </div>
-    </>
-  );
-};
+      <ul>
+        {notesToShow.map((note) => (
+          <Note key={note.id} note={note} />
+        ))}
+      </ul>
 
-const Part = (props) => {
-  return (
-    <p>
-      {props.part.name} {props.part.exercises}
-    </p>
-  );
-};
-
-const Total = (props) => {
-  const total =
-    props.parts[0].exercises +
-    props.parts[1].exercises +
-    props.parts[2].exercises;
-  return (
-    <>
-      <p>Total number of exercises {total}</p>
-    </>
+      <form onSubmit={addNote}>
+        <input value={newNote} onChange={handleNoteChange} />
+        <button type="submit">Save</button>
+      </form>
+    </div>
   );
 };
 

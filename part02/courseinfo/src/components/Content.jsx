@@ -3,7 +3,9 @@ import Part from './Part';
 const Content = (props) => {
   const { parts } = props;
 
-  const total = parts.map((part) => part.exercises);
+  const total = parts.reduce((acc, currentValue) => {
+    return acc + currentValue.exercises;
+  }, 0);
 
   return (
     <div>
@@ -11,12 +13,7 @@ const Content = (props) => {
         <Part key={part.id} part={part} />
       ))}
       <p>
-        {'Total of ' +
-          total.reduce(
-            (accumulator, currentValue) => accumulator + currentValue,
-            0
-          ) +
-          ' exercises'}
+        <strong>{`Total of ${total} exercises`}</strong>
       </p>
     </div>
   );

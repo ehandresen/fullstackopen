@@ -4,17 +4,19 @@ const App = () => {
   const [person, setPerson] = useState([{ name: 'Arto Hellas' }]);
   const [newName, setNewName] = useState('New name..');
 
-  console.log(person);
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const newPerson = {
-      name: newName,
-    };
+    if (person.some((person) => person.name === newName)) {
+      alert(`${newName} already exists in the list`);
+    } else {
+      const newPerson = {
+        name: newName,
+      };
 
-    setPerson(person.concat(newPerson));
-    setNewName('');
+      setPerson(person.concat(newPerson));
+      setNewName('');
+    }
   };
 
   const handleChange = (event) => {
@@ -40,7 +42,6 @@ const App = () => {
           return <li key={person.name}>{person.name}</li>;
         })}
       </ul>
-      <div>debug: {newName}</div>
     </div>
   );
 };

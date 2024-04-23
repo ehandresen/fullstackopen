@@ -2,24 +2,44 @@ import { useState } from 'react';
 
 const App = () => {
   const [person, setPerson] = useState([{ name: 'Arto Hellas' }]);
-  const [newName, setNewName] = useState('');
+  const [newName, setNewName] = useState('New name..');
+
+  console.log(person);
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const newPerson = {
+      name: newName,
+    };
+
+    setPerson(person.concat(newPerson));
+    setNewName('');
+  };
+
+  const handleChange = (event) => {
+    setNewName(event.target.value);
   };
 
   return (
     <div>
       <h2>Phonebook</h2>
+
       <form onSubmit={handleSubmit}>
         <div>
-          name: <input value={person[0].name} />
+          name: <input onChange={handleChange} value={newName} />
         </div>
         <div>
           <button type="submit">add</button>
         </div>
       </form>
+
       <h2>Numbers</h2>
+      <ul>
+        {person.map((person) => {
+          return <li key={person.name}>{person.name}</li>;
+        })}
+      </ul>
       <div>debug: {newName}</div>
     </div>
   );

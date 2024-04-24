@@ -54,9 +54,7 @@ const PersonList = ({ persons }) => {
 };
 
 const App = () => {
-  const initialPersons = [];
-
-  const [persons, setPersons] = useState(initialPersons);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [searchTerm, setSearchTerm] = useState('');

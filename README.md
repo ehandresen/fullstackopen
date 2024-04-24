@@ -13,6 +13,11 @@ http://www.fullstackopen.com/en/
 - [x] Part 0 - Fundamentals of Web apps
 - [x] Part 1 - Introduction to React
 - [ ] **Part 2 - Communicating with server _(In progress)_**
+  - [x] a - Rendering a collection
+  - [x] b - Forms
+  - [x] c - Getting data from server
+  - [ ] d - Altering data in server
+  - [ ] e - Adding styles to React app
 - [ ] Part 3 - Programming a server with NodeJS and Express
 
 ### Notes:

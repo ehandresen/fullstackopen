@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import axios from 'axios';
+import PersonService from './services/PersonService';
 
 const Filter = ({ searchTerm, handleSearch }) => {
   return (
@@ -61,9 +62,10 @@ const App = () => {
 
   useEffect(() => {
     console.log('useeffect');
-    axios.get('http://localhost:3001/persons').then((response) => {
+
+    PersonService.getAll().then((data) => {
       console.log('promise fulfilled');
-      setPersons(response.data);
+      setPersons(data);
     });
   }, []);
 
@@ -78,12 +80,15 @@ const App = () => {
       const newPerson = {
         name: newName,
         number: newNumber,
-        id: persons.length + 1,
       };
 
-      setPersons(persons.concat(newPerson));
-      setNewName('');
-      setNewNumber('');
+      PersonService.create(newPerson).then(() => {
+        console.log('new person added');
+        setPersons(persons.concat(newPerson));
+
+        setNewName('');
+        setNewNumber('');
+      });
     }
   };
 
